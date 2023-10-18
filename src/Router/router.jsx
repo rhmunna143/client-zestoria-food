@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Details from "../Pages/Details/Details";
 import Cart from "../Pages/Cart/Cart";
 import BrandPage from "../Pages/BrandPage/BrandPage";
+import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 
 
 const router = createBrowserRouter(
@@ -48,6 +49,11 @@ const router = createBrowserRouter(
                 {
                     path: "/details/:id",
                     element: <Details></Details>
+                },
+
+                {
+                    path:"/update/:id",
+                    element: <UpdateProduct></UpdateProduct>
                 }
             ]
         }

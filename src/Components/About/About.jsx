@@ -3,7 +3,7 @@ import "./about.css"
 
 const About = () => {
     return (
-        <div className="about-bg about-bg-2 lg:pt-64 lg:pb-10 py-10 px-4 lg:px-0">
+        <div className="about-bg lg:py-40 py-10 px-4 lg:px-0">
             <div className="flex flex-col md:flex-row max-w-6xl mx-auto items-center">
                 <div className="img">
                     <img className="" src="https://i.ibb.co/R43JdhB/juice.png" alt="juice" />

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
     const [brand, setBrand] = useState("")
     const [rating, setRating] = useState("")
 
@@ -16,7 +16,7 @@ const AddProduct = () => {
         setRating(rating)
     }
 
-    const handleAddProduct = (e) => {
+    const handleUpdateProduct = (e) => {
         e.preventDefault()
 
         const form = e.target;
@@ -43,9 +43,9 @@ const AddProduct = () => {
 
     return (
         <div className="max-w-6xl mx-auto my-20 bg-gray-200 py-10 px-4 lg:px-0">
-            <h2 className="text-5xl font-bold text-center">Add New Product</h2>
+            <h2 className="text-5xl font-bold text-center">Update A Product</h2>
             <div className="form mt-10 w-80 md:w-1/2 mx-auto">
-                <form onSubmit={handleAddProduct}>
+                <form onSubmit={handleUpdateProduct}>
                     <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="image" required id="image" placeholder="Image URL" />
 
                     <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="name" required id="name" placeholder="Product Name" />
@@ -75,11 +75,11 @@ const AddProduct = () => {
                         <option value="5">5</option>
                     </select>
 
-                    <button type="submit" className="bg-green-600 text-white hover:bg-green-700 w-full px-4 py-2">Add Product</button>
+                    <button type="submit" className="bg-green-600 text-white hover:bg-green-700 w-full px-4 py-2">Update Product</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;
