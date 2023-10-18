@@ -1,0 +1,6 @@
+.footer-bg {
+    background: url("https://i.ibb.co/DrfpVWs/footer-pattern-1.png"), url("https://i.ibb.co/7V1gDbc/footer-pattern-2.png"), linear-gradient(rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.90));
+    background-position: left bottom, right top;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
