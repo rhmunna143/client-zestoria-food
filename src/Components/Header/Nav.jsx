@@ -1,20 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import DarkModeToggle from "../../DarkMode/DarkModeToggle";
 
 
 const Nav = () => {
     return (
-        <div className="max-w-6xl mx-auto flex justify-center md:justify-between flex-wrap py-5 md:px-4 lg:px-0">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-center lg:justify-between py-5 md:px-4 lg:px-0">
             <div className="logo font-kush text-green-600">
                 <h2 className="text-5xl">Zestoria</h2>
             </div>
 
-            <div className="menu flex justify-center md:justify-between gap-4 flex-wrap items-center">
+            <div className="menu flex justify-center md:justify-between gap-4 items-center">
                 <div className="menus flex justify-center md:justify-between gap-4 flex-wrap items-center">
                     <NavLink
                         to="/"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-green-600" : "text-black"
+                            isPending ? "pending" : isActive ? "text-green-600" : ""
                         }
                     >
                         Home
@@ -23,16 +24,11 @@ const Nav = () => {
                     <NavLink
                         to="/add-product"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-green-600" : "text-black"
+                            isPending ? "pending" : isActive ? "text-green-600" : ""
                         }
                     >
                         Add Product
                     </NavLink>
-
-
-                </div>
-
-                <div className="user flex justify-center md:justify-between gap-4 flex-wrap items-center">
 
                     <p>
                         |
@@ -42,16 +38,20 @@ const Nav = () => {
                         <NavLink
                             to="/register"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-green-600" : "text-black"
+                                isPending ? "pending" : isActive ? "text-green-600" : ""
                             }
                         >
                             Registration
                         </NavLink>
 
+                        <div>
+                            <DarkModeToggle></DarkModeToggle>
+                        </div>
+
                         <NavLink
                             to="/cart"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-green-600 text-xl" : "text-black text-xl"
+                                isPending ? "pending" : isActive ? "text-green-600 text-xl" : " text-xl"
                             }
                         >
                             <p title="My Cart">
@@ -69,8 +69,6 @@ const Nav = () => {
                         </Link>
 
                         <button className="bg-green-600 text-white py-1 px-4">Logout</button>
-
-
                     </div>
                 </div>
             </div>

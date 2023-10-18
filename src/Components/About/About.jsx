@@ -16,7 +16,7 @@ const About = () => {
                         <Separator></Separator>
                     </div>
 
-                    <p className="mt-8 text-slate-600 text-lg">
+                    <p className="mt-8 text-lg">
                         Fruit juice, derived from the natural essence of fruits, offers a refreshing and delicious way to stay hydrated while obtaining essential nutrients. With a vast array of flavors, it provides vital vitamins like vitamin C and essential minerals. Its natural sweetness makes it a palatable choice, ideal for quenching thirst and enjoying the health benefits of fruits in a convenient and flavorful form
                     </p>
 

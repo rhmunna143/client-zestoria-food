@@ -8,9 +8,9 @@ export default {
     fontFamily: {
       "kush": ['Kaushan Script', 'cursive']
     },
-    
+
     extend: {
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
