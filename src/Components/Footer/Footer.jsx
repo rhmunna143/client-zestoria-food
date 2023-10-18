@@ -2,7 +2,7 @@ import "./footer.css"
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className="bg-black">
             <div className="footer-bg">
                 <div className="max-w-6xl mx-auto py-10 mt-12">
                     <div className="mx-auto w-full max-w-screen-xl">
@@ -111,7 +111,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full bg-black text-white text-center mx-auto p-4">
+            <div className="w-full bg-green-950 text-white text-center mx-auto p-4">
                 <p className="text-sm">
                     &copy; 2023 Zestoria. All rights reaserved.
                 </p>
