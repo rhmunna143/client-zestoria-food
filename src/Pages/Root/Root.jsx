@@ -6,7 +6,6 @@ const Root = () => {
     return (
         <div>
             <Nav></Nav>
-
             <Outlet></Outlet>
         </div>
     );

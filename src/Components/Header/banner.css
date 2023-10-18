@@ -1,0 +1,6 @@
+.banner-bg {
+    background: url("https://i.ibb.co/KXkNB53/lily-banse-YHSwy6uqvk-unsplash.jpg"), linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.549));
+    padding: 100px 0;
+    background-blend-mode: overlay;
+    background-size: cover;
+}

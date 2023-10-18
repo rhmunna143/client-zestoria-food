@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <div className="max-w-6xl mx-auto flex justify-center md:justify-between flex-wrap py-5 md:px-4 lg:px-0">
             <div className="logo font-kush text-green-600">
-                <h2 className="text-4xl">Zestoria</h2>
+                <h2 className="text-5xl">Zestoria</h2>
             </div>
 
             <div className="menu flex justify-center md:justify-between gap-4 flex-wrap items-center">
@@ -54,7 +54,9 @@ const Nav = () => {
                                 isPending ? "pending" : isActive ? "text-green-600 text-xl" : "text-black text-xl"
                             }
                         >
-                            <AiOutlineShoppingCart />
+                            <p title="My Cart">
+                                <AiOutlineShoppingCart />
+                            </p>
 
                         </NavLink>
 
