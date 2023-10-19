@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
     const [brand, setBrand] = useState("")
@@ -27,6 +28,7 @@ const AddProduct = () => {
         const price = form.price.value;
         const description = form.description.value;
         const ratings = rating;
+        const type = form.type.value;
 
         const send = {
             image,
@@ -34,10 +36,35 @@ const AddProduct = () => {
             brandName,
             price,
             description,
-            ratings
+            ratings,
+            type
         }
 
-        console.log(send);
+        /*
+
+        https://i.ibb.co/7Jk2Tr0/jonathan-borba-y-ZOf-Nn-I2-PA0-unsplash.jpg
+https://i.ibb.co/rHrcqQm/mae-mu-z8-PEo-NIl-Glg-unsplash.jpg
+https://i.ibb.co/9scS1Bq/mahdi-aminrad-91-KH4-Fun9lc-unsplash.jpg
+https://i.ibb.co/LdN7ShL/yue-liu-6khcjto-QH9-Y-unsplash.jpg
+
+        */
+
+        fetch("http://localhost:7000/products", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(send)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.acknowledged) {
+                    toast.success("New Product Added Successfully")
+                }
+            })
+            .catch(err => {
+                toast.error(err)
+            })
     }
 
 

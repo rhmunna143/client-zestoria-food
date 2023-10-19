@@ -43,7 +43,7 @@ const router = createBrowserRouter(
 
                 {
                     path:"brand/:brandName",
-                    element: <BrandPage></BrandPage>
+                    element: <BrandPage></BrandPage>,
                 },
 
                 {
