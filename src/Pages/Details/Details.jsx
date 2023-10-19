@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Rate } from "antd";
 import { useLoaderData } from "react-router-dom";
 

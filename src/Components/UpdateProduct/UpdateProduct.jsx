@@ -1,20 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-
-import { useState } from "react";
+import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateProduct = () => {
-    const [brand, setBrand] = useState("")
-    const [rating, setRating] = useState("")
-
-    const handleBrand = (e) => {
-        const brand = e.target.value;
-        setBrand(brand)
-    }
-
-    const handleRating = (e) => {
-        const rating = e.target.value;
-        setRating(rating)
-    }
+    const product = useLoaderData()
+    const { brandName, _id, image, name, price, description, type, ratings } = product;
 
     const handleUpdateProduct = (e) => {
         e.preventDefault()
@@ -23,10 +13,11 @@ const UpdateProduct = () => {
 
         const image = form.image.value;
         const name = form.name.value;
-        const brandName = brand;
+        const brandName = form.brand.value;
         const price = form.price.value;
+        const type = form.type.value;
         const description = form.description.value;
-        const ratings = rating;
+        const ratings = form.rating.value;
 
         const send = {
             image,
@@ -34,10 +25,24 @@ const UpdateProduct = () => {
             brandName,
             price,
             description,
-            ratings
+            ratings,
+            type
         }
 
-        console.log(send);
+        fetch(`http://localhost:7000/update/${_id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(send)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.modifiedCount > 0) {
+                    toast.success("Product Update Success..!")
+                }
+            })
+            .catch(err => toast.error(err))
     }
 
 
@@ -46,12 +51,12 @@ const UpdateProduct = () => {
             <h2 className="text-5xl font-bold text-center">Update A Product</h2>
             <div className="form mt-10 w-80 md:w-1/2 mx-auto">
                 <form onSubmit={handleUpdateProduct}>
-                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="image" required id="image" placeholder="Image URL" />
+                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="image" required id="image" defaultValue={image} />
 
-                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="name" required id="name" placeholder="Product Name" />
+                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="name" required id="name" defaultValue={name} />
 
-                    <select onChange={handleBrand} value={brand} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="brand" required id="brand">
-                        <option value="">Select a Brand</option>
+                    <select defaultValue={brandName} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="brand" required id="brand">
+                        <option value={brandName}>Select a Brand</option>
                         <option value="CocaCola">CocaCola</option>
                         <option value="Kellogg's">Kellogg's</option>
                         <option value="McDonald's">McDonald's</option>
@@ -60,14 +65,14 @@ const UpdateProduct = () => {
                         <option value="Starbucks">Starbucks</option>
                     </select>
 
-                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="type" required id="type" placeholder="Product Type" />
+                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="type" required id="type" defaultValue={type} />
 
-                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="price" required id="price" placeholder="Price" />
+                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="price" required id="price" defaultValue={price} />
 
-                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full h-16 mb-5" type="text" name="description" required id="description" placeholder="Short Description" />
+                    <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full h-16 mb-5" type="text" name="description" required id="description" defaultValue={description} />
 
-                    <select onChange={handleRating} value={rating} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="rating" required id="rating">
-                        <option value="">Star Rating</option>
+                    <select defaultValue={ratings} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="rating" required id="rating">
+                        <option value={ratings}>Star Rating</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

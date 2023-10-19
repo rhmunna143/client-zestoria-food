@@ -17,8 +17,6 @@ const BrandPage = () => {
             .catch(err => console.error(err))
     }, [name])
 
-    console.log(name, products);
-
     return (
         <div>
             <SliderImg></SliderImg>
