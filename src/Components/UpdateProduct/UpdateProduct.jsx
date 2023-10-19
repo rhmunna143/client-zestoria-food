@@ -56,7 +56,7 @@ const UpdateProduct = () => {
                     <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" type="text" name="name" required id="name" defaultValue={name} />
 
                     <select defaultValue={brandName} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="brand" required id="brand">
-                        <option value={brandName}>Select a Brand</option>
+                        <option value="">Select a Brand</option>
                         <option value="CocaCola">CocaCola</option>
                         <option value="Kellogg's">Kellogg's</option>
                         <option value="McDonald's">McDonald's</option>
@@ -72,7 +72,7 @@ const UpdateProduct = () => {
                     <input className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full h-16 mb-5" type="text" name="description" required id="description" defaultValue={description} />
 
                     <select defaultValue={ratings} className="border border-green-600 text-green-950 px-4 py-2 bg-transparent w-full mb-5" name="rating" required id="rating">
-                        <option value={ratings}>Star Rating</option>
+                        <option value="">Star Rating</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

@@ -6,6 +6,10 @@ const Details = () => {
     const product = useLoaderData()
     const { brandName, _id, image, name, price, description, type, ratings } = product;
 
+    const handleAddToCart = () => {
+        console.log(clicked);
+    }
+
     return (
         <div className="max-w-6xl mx-auto my-20 flex flex-col md:flex-row justify-center items-center gap-10 md:px-4 lg:px-0">
             <div className="img md:w-1/3 px-4 md:px-0">
@@ -23,7 +27,7 @@ const Details = () => {
 
                 <p>{description}</p>
 
-                <button className="bg-green-600 text-white hover:bg-green-700 py-2 px-8">Att to Cart</button>
+                <button onClick={handleAddToCart} className="bg-green-600 text-white hover:bg-green-700 py-2 px-8">Att to Cart</button>
             </div>
         </div>
     );
