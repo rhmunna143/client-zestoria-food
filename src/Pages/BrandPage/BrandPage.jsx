@@ -1,9 +1,10 @@
+import SliderImg from "../../Components/Slider/SliderImg";
 
 
 const BrandPage = () => {
     return (
         <div>
-            brand
+            <SliderImg></SliderImg>
         </div>
     );
 };
