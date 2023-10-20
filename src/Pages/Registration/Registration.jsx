@@ -1,10 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import Continue from "../../Components/Continue/Continue";
+import { useContext } from "react";
+import { AllContext } from "../../Context/ContextProvider";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../config/firebase.config";
 
 
 const Registration = () => {
     const [error, setPassError] = useState("")
+    const {register} = useContext(AllContext)
+    const [sign, setSign] = useState(null)
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -39,7 +47,20 @@ const Registration = () => {
         // for truthy password go to register
         // register statements
 
-
+        register(email, password)
+        .then(userCredentials => {
+            updateProfile(auth.currentUser, {
+                displayName: name,
+                photoURL: image
+            })
+            
+            setSign(userCredentials?.user)
+            toast.success('Registration successful Login now.')
+        })
+        .catch(err => {
+            toast.error(err?.message)
+        })
+    
     }
 
     return (
@@ -66,8 +87,16 @@ const Registration = () => {
 
                         <p className="text-center">Already have account? <Link to="/login"><span className="text-green-600 hover:text-green-700">Login</span></Link></p>
                     </form>
+
+                    <div>
+                        <Continue />
+                    </div>
                 </div>
             </div>
+
+            {
+                sign && (<Navigate to="/login" />)
+            }
         </div>
     );
 };

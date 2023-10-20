@@ -16,7 +16,7 @@ const Brands = () => {
     return (
         <div className="max-w-6xl mx-auto px-4 lg:px-0">
             <div className="w-fit mx-auto text-center">
-                <h6 className="text-green-600 font-kush">Best For You</h6>
+                <h6 className="text-green-600 font-kush mt-10">Best For You</h6>
                 <h2 className="text-5xl font-bold">Our Special Brands</h2>
                 <div className="mt-5 w-fit mx-auto">
                     <Separator></Separator>
