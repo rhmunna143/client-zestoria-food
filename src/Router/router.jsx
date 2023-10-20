@@ -39,7 +39,7 @@ const router = createBrowserRouter(
                 {
                     path: "/cart",
                     element: <Cart></Cart>,
-                    loader: () => fetch("http://localhost:7000/my-cart")
+                    loader: () => fetch("https://server-zistoria.vercel.app/my-cart")
                 },
 
                 {

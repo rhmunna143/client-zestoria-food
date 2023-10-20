@@ -20,7 +20,7 @@ const Cart = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:7000/my-cart/${_id}`, {
+                    fetch(`https://server-zistoria.vercel.app/my-cart/${_id}`, {
                         method: "DELETE"
                     })
                     .then(res=> res.json())

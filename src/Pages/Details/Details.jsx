@@ -13,7 +13,7 @@ const Details = () => {
             brandName, image, name, price, description, type, ratings
         }
 
-        fetch("http://localhost:7000/cart-post", {
+        fetch("https://server-zistoria.vercel.app/cart-post", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
