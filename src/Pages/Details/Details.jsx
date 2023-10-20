@@ -36,7 +36,7 @@ const Details = () => {
                 <img className="md:mx-0" src={image} alt="" />
             </div>
 
-            <div className="text space-y-3">
+            <div className="text space-y-3 px-4 md:px-0">
                 <h2 className="text-4xl font-bold mt-6 md:mt-0">{name}</h2>
                 <h4 className="text-xl">{brandName}</h4>
                 <h4 className="text-lg">{type}</h4>

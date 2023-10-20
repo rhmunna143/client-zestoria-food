@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Login = () => {
     const [loggedUser, setLoggedUser] = useState(null)
-    const { login } = useContext(AllContext);
+    const { login, path } = useContext(AllContext);
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -57,7 +57,7 @@ const Login = () => {
             </div>
 
             {
-                loggedUser && (<Navigate to="/" />)
+                loggedUser && (<Navigate to={path} />)
             }
         </div>
     );

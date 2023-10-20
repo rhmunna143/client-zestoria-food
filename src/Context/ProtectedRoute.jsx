@@ -3,10 +3,15 @@
 import { useContext } from "react";
 import { AllContext } from "./ContextProvider";
 import Loading from "../Components/Loading/Loading";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({children}) => {
-    const {user, loading} = useContext(AllContext)
+    const {user, loading, setPath} = useContext(AllContext)
+
+    const location = useLocation()
+    const pathName = location.pathname;
+    
+    setPath(pathName)
 
     if(loading) {
         

@@ -8,18 +8,19 @@ import { Link } from "react-router-dom";
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 const Product = ({ product }) => {
-    const { brandName, _id, image, name, price, description, type, ratings } = product;
+    const { brandName, _id, image, name, price, type, ratings } = product;
     const [value, setValue] = useState(ratings);
 
     return (
         <div className="shadow-md border-green-500 p-4">
             <div className="img">
-                <img className="h-1/3" src={image} alt="" />
+                <img className="h-80 w-full" src={image} alt="product" />
             </div>
 
             <div className="text">
                 <h3 className="text-xl font-medium mt-5">{name}</h3>
-                <h4 className="text-base mt-1">{type}</h4>
+                <h4 className="text-lg mt-1">{brandName}</h4>
+                <h4 className="text-base">{type}</h4>
 
                 <p>Price: ${price}</p>
 
