@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Rate } from "antd";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
@@ -7,7 +8,26 @@ const Details = () => {
     const { brandName, _id, image, name, price, description, type, ratings } = product;
 
     const handleAddToCart = () => {
-        console.log(clicked);
+        const { brandName, image, name, price, description, type, ratings } = product;
+        const send = {
+            brandName, image, name, price, description, type, ratings
+        }
+
+        fetch("http://localhost:7000/cart-post", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(send)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            if(data.acknowledged){
+                toast.success("Added to cart. View in My Cart.")
+            } else {
+                toast.error("Something went wrong!! Please recheck.")
+            }
+        })
     }
 
     return (
@@ -27,7 +47,7 @@ const Details = () => {
 
                 <p>{description}</p>
 
-                <button onClick={handleAddToCart} className="bg-green-600 text-white hover:bg-green-700 py-2 px-8">Att to Cart</button>
+                <button onClick={handleAddToCart} className="bg-green-600 text-white hover:bg-green-700 py-2 px-8">Add to Cart</button>
             </div>
         </div>
     );

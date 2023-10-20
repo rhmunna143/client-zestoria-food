@@ -8,7 +8,7 @@ const Brands = () => {
     const [brands, setBrands] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:7000/brands")
+        fetch("https://server-zistoria.vercel.app/brands")
         .then(res => res.json())
         .then(data => setBrands(data))
     }, [])

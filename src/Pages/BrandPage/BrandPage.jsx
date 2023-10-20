@@ -10,7 +10,7 @@ const BrandPage = () => {
     const name = params.brandName;
 
     useEffect(() => {
-        fetch(`http://localhost:7000/brand/${name}`)
+        fetch(`https://server-zistoria.vercel.app/brand/${name}`)
             .then(res => res.json())
             .then(data => setProducts(data))
 

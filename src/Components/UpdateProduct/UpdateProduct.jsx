@@ -29,7 +29,7 @@ const UpdateProduct = () => {
             type
         }
 
-        fetch(`http://localhost:7000/update/${_id}`, {
+        fetch(`https://server-zistoria.vercel.app/update/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

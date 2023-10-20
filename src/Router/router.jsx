@@ -49,13 +49,13 @@ const router = createBrowserRouter(
                 {
                     path: "/details/:id",
                     element: <Details></Details>,
-                    loader: ({params}) => fetch(`http://localhost:7000/details/${params.id}`)
+                    loader: ({params}) => fetch(`https://server-zistoria.vercel.app/details/${params.id}`)
                 },
 
                 {
                     path:"/update/:id",
                     element: <UpdateProduct></UpdateProduct>,
-                    loader: ({params}) => fetch(`http://localhost:7000/details/${params.id}`)
+                    loader: ({params}) => fetch(`https://server-zistoria.vercel.app/details/${params.id}`)
                 }
             ]
         }

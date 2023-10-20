@@ -49,7 +49,7 @@ https://i.ibb.co/LdN7ShL/yue-liu-6khcjto-QH9-Y-unsplash.jpg
 
         */
 
-        fetch("http://localhost:7000/products", {
+        fetch("https://server-zistoria.vercel.app/products", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
