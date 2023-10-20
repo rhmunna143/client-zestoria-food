@@ -1,27 +1,60 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../config/firebase.config";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export const AllContext = createContext(null)
 
-const ContextProvider = ({children}) => {
+const ContextProvider = ({ children }) => {
     // shared context statements
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [path, setPath] = useState("")
 
     const register = (email, password) => {
-        
+        setLoading(true)
+
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = (email, password) => {
+        setLoading(true)
 
         return signInWithEmailAndPassword(auth, email, password)
     }
-    
+
+    // signOut(auth).then(() => {
+    //     toast.success("Logout success. Login Now.")
+    // }).catch((error) => {
+    //     toast.error(error?.message)
+    // });
+
+    const logout = () => {
+
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+
+            setUser(user)
+
+            setLoading(false)
+        })
+
+        return () => unsubscribe()
+    }, [])
 
     const contextValue = {
         register,
-        login
+        login,
+        user,
+        loading,
+        path,
+        setPath,
+        logout
     }
 
     return (

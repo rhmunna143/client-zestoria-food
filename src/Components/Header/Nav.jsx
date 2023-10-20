@@ -1,9 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import DarkModeToggle from "../../DarkMode/DarkModeToggle";
+import { useContext } from "react";
+import { AllContext } from "../../Context/ContextProvider";
 
 
 const Nav = () => {
+    const { user, logout } = useContext(AllContext)
+
     return (
         <div className="max-w-6xl mx-auto flex flex-wrap justify-center lg:justify-between py-5 md:px-4 lg:px-0">
             <div className="logo font-kush text-green-600">
@@ -21,14 +25,16 @@ const Nav = () => {
                         Home
                     </NavLink>
 
-                    <NavLink
-                        to="/add-product"
-                        className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-green-600" : ""
-                        }
-                    >
-                        Add Product
-                    </NavLink>
+                    {
+                        user && <NavLink
+                            to="/add-product"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-green-600" : ""
+                            }
+                        >
+                            Add Product
+                        </NavLink>
+                    }
 
                     <p>
                         |
@@ -44,10 +50,6 @@ const Nav = () => {
                             Registration
                         </NavLink>
 
-                        <div>
-                            <DarkModeToggle></DarkModeToggle>
-                        </div>
-
                         <NavLink
                             to="/cart"
                             className={({ isActive, isPending }) =>
@@ -60,15 +62,31 @@ const Nav = () => {
 
                         </NavLink>
 
-                        <div className="info">
-                            pp username
+                        <div className="info flex items-center gap-2">
+                            {
+                                user && <img src={user?.photoURL} alt="DP" className="w-12 h-12 aspect-square rounded-full" />
+                            }
+
+                            {
+                                user && <p>{user.displayName}</p>
+                            }
                         </div>
 
-                        <Link to="/login">
-                            <button className="bg-green-600 text-white py-1 px-4">Login</button>
-                        </Link>
+                        {
+                            !user ? <Link to="/login">
+                                <button className="bg-green-600 text-white py-1 px-4">Login</button>
+                            </Link>
+                                :
+                                ""
+                        }
 
-                        <button className="bg-green-600 text-white py-1 px-4">Logout</button>
+                        {
+                            user && <button onClick={logout} className="bg-green-600 text-white py-1 px-4">Logout</button>
+                        }
+
+                        <div>
+                            <DarkModeToggle></DarkModeToggle>
+                        </div>
                     </div>
                 </div>
             </div>
