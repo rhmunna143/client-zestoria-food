@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
-import { createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword,  onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../config/firebase.config";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -12,6 +12,8 @@ const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [path, setPath] = useState("")
+
+    const googleProvider = new GoogleAuthProvider()
 
     const register = (email, password) => {
         setLoading(true)
@@ -25,11 +27,10 @@ const ContextProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    // signOut(auth).then(() => {
-    //     toast.success("Logout success. Login Now.")
-    // }).catch((error) => {
-    //     toast.error(error?.message)
-    // });
+    const googleSignIn =() => {
+
+        return signInWithPopup(auth, googleProvider)
+    }
 
     const logout = () => {
 
@@ -54,7 +55,8 @@ const ContextProvider = ({ children }) => {
         loading,
         path,
         setPath,
-        logout
+        logout,
+        googleSignIn
     }
 
     return (

@@ -3,10 +3,10 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import DarkModeToggle from "../../DarkMode/DarkModeToggle";
 import { useContext } from "react";
 import { AllContext } from "../../Context/ContextProvider";
-
+import LoadingSmall from "../Loading/LoadingSmall";
 
 const Nav = () => {
-    const { user, logout } = useContext(AllContext)
+    const { user, logout, loading } = useContext(AllContext)
 
     return (
         <div className="max-w-6xl mx-auto flex flex-wrap justify-center lg:justify-between py-5 md:px-4 lg:px-0">
@@ -62,22 +62,26 @@ const Nav = () => {
 
                         </NavLink>
 
-                        <div className="info flex items-center gap-2">
-                            {
-                                user && <img src={user?.photoURL} alt="DP" className="w-12 h-12 aspect-square rounded-full" />
-                            }
+                        {
+                            !loading ? <div className="info flex items-center gap-2">
+                                {
+                                    user && <img src={user?.photoURL} alt="DP" className="w-12 h-12 aspect-square rounded-full" />
+                                }
 
-                            {
-                                user && <p>{user.displayName}</p>
-                            }
-                        </div>
+                                {
+                                    user && <p>{user.displayName}</p>
+                                }
+                            </div>
+
+                            :
+
+                            <LoadingSmall></LoadingSmall>
+                        }
 
                         {
-                            !user ? <Link to="/login">
+                            !user && <Link to="/login">
                                 <button className="bg-green-600 text-white py-1 px-4">Login</button>
                             </Link>
-                                :
-                                ""
                         }
 
                         {

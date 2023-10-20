@@ -8,6 +8,7 @@ import Details from "../Pages/Details/Details";
 import Cart from "../Pages/Cart/Cart";
 import BrandPage from "../Pages/BrandPage/BrandPage";
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
+import ProtectedRoute from "../Context/ProtectedRoute";
 
 
 const router = createBrowserRouter(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
 
                 {
                     path: "/add-product",
-                    element: <AddProduct></AddProduct>
+                    element: <ProtectedRoute><AddProduct></AddProduct></ProtectedRoute>
                 },
 
                 {
@@ -38,7 +39,7 @@ const router = createBrowserRouter(
 
                 {
                     path: "/cart",
-                    element: <Cart></Cart>,
+                    element: <ProtectedRoute><Cart></Cart></ProtectedRoute>,
                     loader: () => fetch("https://server-zistoria.vercel.app/my-cart")
                 },
 
@@ -49,13 +50,13 @@ const router = createBrowserRouter(
 
                 {
                     path: "/details/:id",
-                    element: <Details></Details>,
+                    element: <ProtectedRoute><Details></Details></ProtectedRoute>,
                     loader: ({params}) => fetch(`https://server-zistoria.vercel.app/details/${params.id}`)
                 },
 
                 {
                     path:"/update/:id",
-                    element: <UpdateProduct></UpdateProduct>,
+                    element: <ProtectedRoute><UpdateProduct></UpdateProduct></ProtectedRoute>,
                     loader: ({params}) => fetch(`https://server-zistoria.vercel.app/details/${params.id}`)
                 }
             ]
