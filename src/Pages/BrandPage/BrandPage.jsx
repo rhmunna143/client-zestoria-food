@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import SliderImg from "../../Components/Slider/SliderImg";
 import { useEffect, useState } from "react";
 import Product from "../../Components/Product/Product";
-
+import Separator from "../../Components/Separator/Separator";
 
 const BrandPage = () => {
     const [products, setProducts] = useState([])
@@ -18,8 +18,15 @@ const BrandPage = () => {
     }, [name])
 
     return (
-        <div>
-            <SliderImg></SliderImg>
+        <div className="my-12">
+            <SliderImg products={products}></SliderImg>
+            <div className="w-fit mx-auto text-center mt-20">
+                <h4 className="font-kush text-green-600">Our Best Products from</h4>
+                <h2 className="text-5xl font-bold">{name}</h2>
+                <div className="w-fit mx-auto mt-5">
+                    <Separator />
+                </div>
+            </div>
             <div className="max-w-6xl mx-auto my-20">
                 {
                     products.length > 0 && <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
