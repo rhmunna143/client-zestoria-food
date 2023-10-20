@@ -9,6 +9,7 @@ import Cart from "../Pages/Cart/Cart";
 import BrandPage from "../Pages/BrandPage/BrandPage";
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import ProtectedRoute from "../Context/ProtectedRoute";
+import NotFoundPage from "../Pages/NotFound/NotFound";
 
 
 const router = createBrowserRouter(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
         {
             path: "/",
             element: <Root />,
+            errorElement: <NotFoundPage />,
             children: [
                 {
                     path: "/",
