@@ -11,7 +11,6 @@ import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import ProtectedRoute from "../Context/ProtectedRoute";
 import NotFoundPage from "../Pages/NotFound/NotFound";
 
-
 const router = createBrowserRouter(
     [
         {
@@ -39,10 +38,18 @@ const router = createBrowserRouter(
                     element: <Login></Login>
                 },
 
+                // https://server-zistoria.vercel.app/my-cart
+
                 {
                     path: "/cart",
                     element: <ProtectedRoute><Cart></Cart></ProtectedRoute>,
-                    loader: () => fetch("https://server-zistoria.vercel.app/my-cart")
+                    // loader: () => fetch("https://localhost:7000/my-cart", {
+                    //     method: "GET",
+                    //     headers: {
+                    //         "content-type": "application/json"
+                    //     },
+                    //     body: JSON.stringify(uid)
+                    // })
                 },
 
                 {

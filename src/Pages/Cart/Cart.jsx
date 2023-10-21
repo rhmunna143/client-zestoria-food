@@ -1,14 +1,28 @@
 /* eslint-disable no-unused-vars */
 import { useLoaderData } from "react-router-dom";
 import CartCard from "./CartCard";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
+import { AllContext } from "../../Context/ContextProvider";
 
 
 const Cart = () => {
-    const loadedMyCart = useLoaderData()
-    const [myCart, setMyCart] = useState(loadedMyCart)
+    const [loadedMyCart, setLoadedMyCart] = useState([])
+    const [myCart, setMyCart] = useState([])
+
+    const { user } = useContext(AllContext)
+    const uid = user?.uid;
+
+    useEffect(() => {
+        fetch(`https://server-zistoria.vercel.app/cart/${uid}`)
+            .then(res => res.json())
+            .then(data => {
+                setLoadedMyCart(data)
+                setMyCart(data)
+                // console.log(data);
+            })
+    }, [uid])
 
     const handleDelete = (_id) => {
         swal({
@@ -23,15 +37,15 @@ const Cart = () => {
                     fetch(`https://server-zistoria.vercel.app/my-cart/${_id}`, {
                         method: "DELETE"
                     })
-                    .then(res=> res.json())
-                    .then(data=> {
-                        if(data.deletedCount > 0) {
-                            toast.success("Item Deleted from your Cart.")
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                toast.success("Item Deleted from your Cart.")
 
-                            const filter = myCart.filter(items => items._id != _id);
-                            setMyCart(filter)
-                        }
-                    })
+                                const filter = myCart.filter(items => items._id != _id);
+                                setMyCart(filter)
+                            }
+                        })
                 } else {
                     swal("Your cart item is not deleted.");
                 }

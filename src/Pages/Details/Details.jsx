@@ -1,16 +1,22 @@
 /* eslint-disable no-unused-vars */
 import { Rate } from "antd";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import { AllContext } from "../../Context/ContextProvider";
 
 const Details = () => {
     const product = useLoaderData()
-    const { brandName, _id, image, name, price, description, type, ratings } = product;
+    const {user} = useContext(AllContext)
+    const email = user?.email;
+    const uid = user?.uid;
+
+    const { brandName, image, name, price, description, type, ratings } = product;
 
     const handleAddToCart = () => {
         const { brandName, image, name, price, description, type, ratings } = product;
         const send = {
-            brandName, image, name, price, description, type, ratings
+            brandName, image, name, price, description, type, ratings, email, uid
         }
 
         fetch("https://server-zistoria.vercel.app/cart-post", {
