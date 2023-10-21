@@ -32,7 +32,7 @@ const Continue = () => {
             <button onClick={handleGoogleSignIn} className="bg-slate-200 text-green-600 mt-4 py-2 px-4 w-full">Continue with <span className="text-green-700">Google</span></button>
 
             {
-                socialUser && (<Navigate to={path} />)
+                socialUser && (<Navigate to={path || "/"} />)
             }
 
         </div>

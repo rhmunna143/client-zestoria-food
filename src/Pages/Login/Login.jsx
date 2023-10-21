@@ -57,7 +57,7 @@ const Login = () => {
             </div>
 
             {
-                loggedUser && (<Navigate to={path} />)
+                loggedUser && (<Navigate to={path || "/"} />)
             }
         </div>
     );

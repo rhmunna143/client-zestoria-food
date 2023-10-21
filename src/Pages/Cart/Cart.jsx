@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { useLoaderData } from "react-router-dom";
 import CartCard from "./CartCard";
 import { useContext, useEffect, useState } from "react";
 import swal from "sweetalert";
